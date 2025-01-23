@@ -13,7 +13,7 @@
             background: url('https://img.jagranjosh.com/images/2022/December/29122022/Thiagarajar-College-of-Engineering-TCE-Madurai-Campus-View-1.jpeg') no-repeat center center fixed;
             background-size: cover;
             filter: blur(1.5px);
-            z-index: -1; /* Make sure the background is behind the content */
+            z-index: -1;
         }
         .top-bar {
             position: fixed;
@@ -148,7 +148,7 @@
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
 
-        let isYourMessage = true; // Tracks if the message is yours
+        let isYourMessage = true; 
 
         sendButton.addEventListener('click', () => {
             const messageText = messageInput.value.trim();
@@ -160,7 +160,7 @@
                 messageDiv.innerHTML = `<span>${messageText}</span><div class="timestamp">${timestamp}</div>`;  <!-- Fixed here with backticks -->
 
                 messagesDiv.appendChild(messageDiv);
-                messagesDiv.scrollTop = messagesDiv.scrollHeight; // Auto-scroll
+                messagesDiv.scrollTop = messagesDiv.scrollHeight; 
                 messageInput.value = '';
             }
         });
