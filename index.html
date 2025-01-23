@@ -73,10 +73,10 @@
             top: 50%;
             right: 20px;
             font-size: 30px;
-            color: white; /* Arrow color set to black */
+            color: white; 
             cursor: pointer;
             transform: translateY(-50%);
-            z-index: 10; /* Ensure arrow is on top of the image */
+            z-index: 10; 
             font-weight: bold;
         }
         .arrow:hover {
@@ -101,12 +101,12 @@
     <script>
         function slideImage() {
             const imageContainer = document.getElementById('imageContainer');
-            imageContainer.style.transform = 'translateX(-100%)'; // Slide the image to the left
+            imageContainer.style.transform = 'translateX(-100%)';
 
-            // Redirect to login.html after the slide animation ends
+            
             setTimeout(function() {
-                window.location.href = 'login.php'; // Navigate to login.html
-            }, 1000); // Wait 1 second to match the duration of the sliding animation
+                window.location.href = 'login.php'; 
+            }, 1000); 
         }
     </script>
 </body>
