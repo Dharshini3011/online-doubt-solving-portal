@@ -12,24 +12,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pass = '';           
 
     try {
-        // Create PDO connection
+       
         $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Query to check if name exists
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE name = :name");  // changed username to name
+       
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE name = :name"); 
         $stmt->bindParam(':name', $name);
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Check if user exists and password matches
+        
         if ($user && password_verify($password, $user['password'])) {
-            // Redirect to home page if valid
+          
             header("Location: home.html");
             exit();
         } else {
-            $errorMessage = 'Invalid name or password';  // changed username to name
+            $errorMessage = 'Invalid name or password'; 
         }
     } catch (PDOException $e) {
         $errorMessage = 'Database connection failed: ' . $e->getMessage();
@@ -144,13 +144,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="overlay"></div>
     <div class="login-container">
         <h2>Login to TCE-IT</h2>
-        <!-- Display error message if exists -->
+        
         <?php if (isset($errorMessage)) { ?>
         <div class="error-message"><?php echo $errorMessage; ?></div>
         <?php } ?>
 
         <form action="login.php" method="POST">
-            <input type="text" name="name" placeholder="Name" required> <!-- changed username to name -->
+            <input type="text" name="name" placeholder="Name" required> 
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
