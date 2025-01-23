@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask peer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://img.jagranjosh.com/images/2022/December/29122022/Thiagarajar-College-of-Engineering-TCE-Madurai-Campus-View-1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(1.5px);
+            z-index: -1; 
+            background: url('https://img.jagranjosh.com/images/2022/December/29122022/Thiagarajar-College-of-Engineering-TCE-Madurai-Campus-View-1.jpeg') no-repeat center center fixed;
+            
+            background-size: cover;
+        }
+        
+        header {
+            background-color: #6c4b26;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header .icons {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        header .icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: #ffc107;
+            overflow: hidden;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            background-color: #ff9f00;
+            color: white;
+        }
+
+        .search-bar {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #6c4b26;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #5a3920;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .feature {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            color: #6c4b26;
+        }
+
+        .feature p {
+            font-size: 14px;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .feature .btn {
+            background-color: #6c4b26;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .feature .btn:hover {
+            background-color: #5a3920;
+        }
+
+        footer {
+            background-color: #6c4b26;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        header .icons {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 15px;
+}
+
+header .icon {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid white; 
+    background-color: #ddd; 
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Ask Peer</h1>
+        <div class="icons">
+            <img src="noti.png" alt="Notifications" class="icon">
+            <img src="profile.png" alt="Profile" class="icon">
+        </div>
+    </header>
+
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search for categories...">
+        <button>Search</button>
+    </div>
+
+    <div class="container">
+        <section id="Data Structures">
+            <div class="feature">
+                <h3>Data Structures</h3>
+                <a href="doubt.html" class="btn">Ask Doubt</a>
+            </div>
+        </section>
+
+        <section id="Machine Learning">
+            <div class="feature">
+                <h3>Machine Learning</h3>
+                <a href="doubt.html" class="btn">Ask Doubt</a>
+            </div>
+        </section>
+
+        <section id="Artificial Intelligence">
+            <div class="feature">
+                <h3>Artificial Intelligence</h3>
+                <a href="doubt.html" class="btn">Ask Doubt</a>
+            </div>
+        </section>
+
+        <section id="Database Management System">
+            <div class="feature">
+                <h3>Database Management System</h3>
+                <a href="doubt.html" class="btn">Ask Doubt</a>
+            </div>
+        </section>
+
+        <section id="Operating System">
+            <div class="feature">
+                <h3>Operating System</h3>
+                <a href="doubt.html" class="btn">Ask Doubt</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>TCE-IT Doubt Portal | Where collaboration leads to success.</p>
+    </footer>
+</body>
+
+</html>

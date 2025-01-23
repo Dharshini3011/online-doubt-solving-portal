@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ask Peer</title>
+    <style>
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://img.jagranjosh.com/images/2022/December/29122022/Thiagarajar-College-of-Engineering-TCE-Madurai-Campus-View-1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(1.5px);
+            z-index: -1; /* Make sure the background is behind the content */
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #5D4037;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+        }
+
+        .top-bar h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icons i {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #f5D59B;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ECE5DD;
+            margin-top: 90;
+            padding: 30;
+            background: url('https://img.jagranjosh.com/images/2022/December/29122022/Thiagarajar-College-of-Engineering-TCE-Madurai-Campus-View-1.jpeg') no-repeat center center fixed;
+            
+            background-size: cover;
+        }
+        #chatContainer {
+            max-width: 600px;
+            margin: 70px auto 0 ;
+            background: #ffffff;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            padding-top: 35px;
+        }
+        #messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #FAFAFA;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 60%;
+            word-wrap: break-word;
+            position: relative;
+        }
+        .yourMessage {
+            align-self: flex-start;
+            background-color: #f5d59b;
+            margin-left: 225px;
+        }
+        .otherMessage {
+            align-self: flex-end;
+            background-color: #E5e4e4;
+            margin-right: 10px;
+        }
+        .timestamp {
+            font-size: 10px;
+            color: #555;
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+        }
+        #inputContainer {
+            display: flex;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+        }
+        #messageInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        #sendButton {
+            background-color: #5d4037;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #sendButton:hover {
+            background-color: #5d4037;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatContainer">
+        <div id="messages"></div>
+        <div id="inputContainer">
+            <input type="text" id="messageInput" placeholder="Type a message...">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+
+    <div class="top-bar">
+        <h1>Ask Peer</h1>
+        <div class="icons">
+            <i class="fas fa-user-circle" title="Profile"></i>
+            <i class="fas fa-bell" title="Notifications"></i>
+            <i class="fas fa-cog" title="Settings"></i>
+        </div>
+    </div>
+
+    <script>
+        const messagesDiv = document.getElementById('messages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+
+        let isYourMessage = true; // Tracks if the message is yours
+
+        sendButton.addEventListener('click', () => {
+            const messageText = messageInput.value.trim();
+            if (messageText) {
+                const messageDiv = document.createElement('div');
+                const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                messageDiv.classList.add('message', isYourMessage ? 'yourMessage' : 'otherMessage');
+                messageDiv.innerHTML = `<span>${messageText}</span><div class="timestamp">${timestamp}</div>`;  <!-- Fixed here with backticks -->
+
+                messagesDiv.appendChild(messageDiv);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight; // Auto-scroll
+                messageInput.value = '';
+            }
+        });
+
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    </script>
+</body>
+</html>
