@@ -31,7 +31,7 @@
             background: url('https://img.jagranjosh.com/images/2022/December/29122022/Thiagarajar-College-of-Engineering-TCE-Madurai-Campus-View-1.jpeg') no-repeat center center fixed;
             background-size: cover;
             filter: blur(1.5px);
-            z-index: -1; /* Make sure the background is behind the content */
+            z-index: -1; 
         }
         
         #chatContainer {
@@ -189,10 +189,10 @@
 <body>
 
     <div id="chatContainer">
-        <!-- Search Bar inside the container -->
+        
         <input type="text" id="searchBar" placeholder="Search for a doubt...">
 
-        <!-- Question Section -->
+       
         <div id="questionContainer">
             <h3 style="font-size: 24px; font-weight: bold; color: #333;">Ask a Question</h3>
             <textarea id="questionInput" rows="4" placeholder="Type your question here..."></textarea>
@@ -207,7 +207,7 @@
             <div id="messages"></div>
         </div>
 
-        <!-- Reply Section -->
+        
         <div id="replyContainer" style="display:none;">
             <h3 style="font-size: 24px; font-weight: bold; color: #333;">Post a Reply</h3>
             <textarea id="replyInput" rows="4" placeholder="Type your reply here..."></textarea>
@@ -229,9 +229,9 @@
         const questionText = document.getElementById('questionText');
         const questionContainer = document.getElementById('questionContainer');
         const replyContainer = document.getElementById('replyContainer');
-        let currentQuestion = null; // To track the current question being replied to
+        let currentQuestion = null; 
 
-        // Search functionality - matches keyword in questions and replies
+       
         searchBar.addEventListener('input', (e) => {
             const searchKeyword = e.target.value.trim().toLowerCase();
             const allMessages = document.querySelectorAll('.message');
@@ -245,12 +245,12 @@
             });
         });
 
-        // Toggle the question input
+       
         function toggleQuestionInput() {
             questionContainer.style.display = questionContainer.style.display === 'none' ? 'block' : 'none';
         }
 
-        // Post a question
+   
         postQuestionButton.addEventListener('click', () => {
             const questionTextValue = questionInput.value.trim();
             if (questionTextValue) {
@@ -266,19 +266,19 @@
                     <button onclick="replyToQuestion(event)">Reply</button>
                 `;
                 messagesDiv.appendChild(messageDiv);
-                questionInput.value = ''; // Clear the question input field
-                questionContainer.style.display = 'none'; // Hide the question input
-                questionDisplay.style.display = 'block'; // Show the question display area
+                questionInput.value = ''; 
+                questionContainer.style.display = 'none';
+                questionDisplay.style.display = 'block';
             }
         });
 
-        // Reply to a question
+     
         function replyToQuestion(event) {
             currentQuestion = event.target.closest('.message');
-            replyContainer.style.display = 'block'; // Show the reply input area
+            replyContainer.style.display = 'block'; 
         }
 
-        // Post a reply to a question
+      
         postReplyButton.addEventListener('click', () => {
             const replyText = replyInput.value.trim();
             if (replyText && currentQuestion) {
@@ -293,12 +293,12 @@
                     <div class="likeCount">0</div>
                 `;
                 currentQuestion.appendChild(messageDiv);
-                replyInput.value = ''; // Clear the reply input field
-                replyContainer.style.display = 'none'; // Hide the reply input area
+                replyInput.value = ''; 
+                replyContainer.style.display = 'none'; 
             }
         });
 
-        // Function to toggle like count
+        
         function toggleLike(event) {
             const likeButton = event.target.closest('.likeButton');
             const likeCountDiv = likeButton.nextElementSibling;
