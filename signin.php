@@ -1,52 +1,49 @@
 <?php
-// Database connection details
-$host = 'localhost'; // Replace with your database host
-$db = 'askpeer';     // Your database name
-$user = 'root';      // Your database username
-$pass = '';          // Your database password
 
-// Initialize variables to store form data and errors
+$host = 'localhost'; 
+$db = 'askpeer';     
+$user = 'root';      
+$pass = '';          
 $name = '';
 $email = '';
 $password = '';
-$profilePicturePath = 'uploads/default.jpg'; // Default image if no photo is uploaded
+$profilePicturePath = 'uploads/default.jpg'; 
 $errorMessage = '';
 
-// Handle form submission
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Check email format for ".tce.edu"
     $emailPattern = '/[a-zA-Z0-9._%+-]+\.tce\.edu$/';
     if (!preg_match($emailPattern, $email)) {
         $errorMessage = "Please enter a valid email address that contains '.tce.edu'.";
     }
     
      else {
-        // Hash the password before storing it
+       
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Handle the profile photo upload
+       
         if ($_FILES['profilePhoto']['error'] === UPLOAD_ERR_OK) {
-            // Upload photo to a directory (ensure 'uploads/' exists and has write permissions)
+            
             $uploadDir = 'uploads/';
             $fileTmpPath = $_FILES['profilePhoto']['tmp_name'];
             $fileName = $_FILES['profilePhoto']['name'];
             $filePath = $uploadDir . $fileName;
 
             if (move_uploaded_file($fileTmpPath, $filePath)) {
-                $profilePicturePath = $filePath; // Set the path of the uploaded photo
+                $profilePicturePath = $filePath; 
             }
         }
 
-        // Database insertion logic
+        
         try {
             $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            // Check if name or email already exists
+            
             $stmt = $pdo->prepare("SELECT * FROM users WHERE name = :name OR email = :email");
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':email', $email);
@@ -56,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($existingUser) {
                 $errorMessage = "Name or email already exists!";
             } else {
-                // Insert new user data into the database
+                
                 $stmt = $pdo->prepare("INSERT INTO users (name, email, password, profile_picture) 
                                        VALUES (:name, :email, :password, :profile_picture)");
                 $stmt->bindParam(':name', $name);
@@ -65,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bindParam(':profile_picture', $profilePicturePath);
                 $stmt->execute();
 
-                // Redirect to login page
+               
                 header("Location: home.html");
                 exit();
             }
@@ -202,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Sign</button>
         </form>
-        <p>Already have an account? <a href="login.php">Login</a></p> <!-- Link to login page -->
+        <p>Already have an account? <a href="login.php">Login</a></p> 
     </div>
 
     <script>
